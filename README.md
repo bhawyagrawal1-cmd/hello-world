@@ -36,9 +36,34 @@ UC7: Display "Hello" with Multiple Command-Line Arguments using String.join() Me
 
 https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/UC7-string-join
 
+## Practice Programs
+
+Week 1 Level 1 Practice Programs
+
+https://github.com/bhawyagrawal1-cmd/hello-world/blob/main/src/main/java/practice/week1/Week1Level1Programs.java
+
+Array Level 1 Practice Programs
+
+https://github.com/bhawyagrawal1-cmd/hello-world/blob/main/src/main/java/practice/arrays/level1/ArrayLevel1Programs.java
+
+Array Level 2 Practice Programs
+
+https://github.com/bhawyagrawal1-cmd/hello-world/blob/main/src/main/java/practice/arrays/level2/ArrayLevel2Programs.java
+
+Array Level 3 Practice Programs
+
+https://github.com/bhawyagrawal1-cmd/hello-world/blob/main/src/main/java/practice/arrays/level3/ArrayLevel3Programs.java
+
 ## Run
 
 ```powershell
 javac -d target/classes src/main/java/HelloApp.java
 java -cp target/classes HelloApp
+```
+
+Compile all practice programs:
+
+```powershell
+$files = Get-ChildItem -Path src/main/java -Recurse -Filter *.java | ForEach-Object { $_.FullName }
+javac -d target/classes $files
 ```
