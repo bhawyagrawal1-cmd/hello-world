@@ -54,6 +54,16 @@ Array Level 3 Practice Programs
 
 https://github.com/bhawyagrawal1-cmd/hello-world/blob/main/src/main/java/practice/arrays/level3/ArrayLevel3Programs.java
 
+## Console Tic-Tac-Toe Game
+
+Tic-Tac-Toe UC1: Display Empty Board
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc1-empty-board
+
+Tic-Tac-Toe UC2: Toss to Decide First Player and Symbol
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc2-toss-player-symbol
+
 ## Run
 
 ```powershell
