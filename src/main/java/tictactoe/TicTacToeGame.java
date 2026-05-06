@@ -128,7 +128,7 @@ public class TicTacToeGame {
                 System.out.println("Computer Row: " + indices[0] + ", Column: " + indices[1]);
             }
 
-            if (hasWinner(board, currentSymbol)) {
+            if (checkWinningCondition(board, currentSymbol)) {
                 printBoard(board);
                 System.out.println(gameState.currentPlayer + " wins!");
                 break;
@@ -160,19 +160,33 @@ public class TicTacToeGame {
         }
     }
 
-    static boolean hasWinner(char[][] board, char symbol) {
+    static boolean checkWinningCondition(char[][] board, char symbol) {
+        return hasWinningRow(board, symbol)
+                || hasWinningColumn(board, symbol)
+                || hasWinningDiagonal(board, symbol);
+    }
+
+    static boolean hasWinningRow(char[][] board, char symbol) {
         for (int row = 0; row < board.length; row++) {
             if (board[row][0] == symbol && board[row][1] == symbol && board[row][2] == symbol) {
                 return true;
             }
         }
 
+        return false;
+    }
+
+    static boolean hasWinningColumn(char[][] board, char symbol) {
         for (int column = 0; column < board[0].length; column++) {
             if (board[0][column] == symbol && board[1][column] == symbol && board[2][column] == symbol) {
                 return true;
             }
         }
 
+        return false;
+    }
+
+    static boolean hasWinningDiagonal(char[][] board, char symbol) {
         return (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
                 || (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol);
     }
