@@ -12,25 +12,8 @@ public class TicTacToeGame {
         initializeBoard(board);
         GameState gameState = tossToStart(random);
 
-        printBoard(board);
         printGameState(gameState);
-        int slot = readSlot(input);
-        int[] indices = convertSlotToIndices(slot);
-        boolean validMove = isValidMove(board, indices[0], indices[1]);
-
-        if (validMove) {
-            placeMove(board, indices[0], indices[1], gameState.humanSymbol);
-        }
-
-        int computerSlot = makeComputerMove(board, gameState.computerSymbol, random);
-        int[] computerIndices = convertSlotToIndices(computerSlot);
-
-        System.out.println("Selected Slot: " + slot);
-        System.out.println("Row: " + indices[0] + ", Column: " + indices[1]);
-        System.out.println("Move Valid: " + validMove);
-        System.out.println("Computer Selected Slot: " + computerSlot);
-        System.out.println("Computer Row: " + computerIndices[0] + ", Column: " + computerIndices[1]);
-        printBoard(board);
+        runGameLoop(board, gameState, input, random);
         input.close();
     }
 
@@ -119,6 +102,91 @@ public class TicTacToeGame {
                 return slot;
             }
         }
+    }
+
+    static void runGameLoop(char[][] board, GameState gameState, Scanner input, Random random) {
+        while (true) {
+            printBoard(board);
+
+            char currentSymbol = getCurrentSymbol(gameState);
+
+            if ("Human".equals(gameState.currentPlayer)) {
+                int slot = readSlot(input);
+                int[] indices = convertSlotToIndices(slot);
+
+                if (!isValidMove(board, indices[0], indices[1])) {
+                    System.out.println("Invalid move. Try again.");
+                    continue;
+                }
+
+                placeMove(board, indices[0], indices[1], currentSymbol);
+                System.out.println("Selected Slot: " + slot);
+            } else {
+                int slot = makeComputerMove(board, currentSymbol, random);
+                int[] indices = convertSlotToIndices(slot);
+                System.out.println("Computer Selected Slot: " + slot);
+                System.out.println("Computer Row: " + indices[0] + ", Column: " + indices[1]);
+            }
+
+            if (hasWinner(board, currentSymbol)) {
+                printBoard(board);
+                System.out.println(gameState.currentPlayer + " wins!");
+                break;
+            }
+
+            if (isBoardFull(board)) {
+                printBoard(board);
+                System.out.println("The game is a draw.");
+                break;
+            }
+
+            switchTurn(gameState);
+        }
+    }
+
+    static char getCurrentSymbol(GameState gameState) {
+        if ("Human".equals(gameState.currentPlayer)) {
+            return gameState.humanSymbol;
+        }
+
+        return gameState.computerSymbol;
+    }
+
+    static void switchTurn(GameState gameState) {
+        if ("Human".equals(gameState.currentPlayer)) {
+            gameState.currentPlayer = "Computer";
+        } else {
+            gameState.currentPlayer = "Human";
+        }
+    }
+
+    static boolean hasWinner(char[][] board, char symbol) {
+        for (int row = 0; row < board.length; row++) {
+            if (board[row][0] == symbol && board[row][1] == symbol && board[row][2] == symbol) {
+                return true;
+            }
+        }
+
+        for (int column = 0; column < board[0].length; column++) {
+            if (board[0][column] == symbol && board[1][column] == symbol && board[2][column] == symbol) {
+                return true;
+            }
+        }
+
+        return (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
+                || (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol);
+    }
+
+    static boolean isBoardFull(char[][] board) {
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[row].length; column++) {
+                if (board[row][column] == '-') {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     static class GameState {
