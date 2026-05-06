@@ -16,8 +16,10 @@ public class TicTacToeGame {
         printGameState(gameState);
         int slot = readSlot(input);
         int[] indices = convertSlotToIndices(slot);
+        boolean validMove = isValidMove(board, indices[0], indices[1]);
         System.out.println("Selected Slot: " + slot);
         System.out.println("Row: " + indices[0] + ", Column: " + indices[1]);
+        System.out.println("Move Valid: " + validMove);
         input.close();
     }
 
@@ -79,6 +81,17 @@ public class TicTacToeGame {
         int column = (slot - 1) % 3;
 
         return new int[] {row, column};
+    }
+
+    static boolean isValidMove(char[][] board, int row, int column) {
+        boolean isWithinBounds = row >= 0 && row < board.length
+                && column >= 0 && column < board[row].length;
+
+        if (!isWithinBounds) {
+            return false;
+        }
+
+        return board[row][column] == '-';
     }
 
     static class GameState {
