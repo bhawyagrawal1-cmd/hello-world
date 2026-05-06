@@ -15,7 +15,9 @@ public class TicTacToeGame {
         printBoard(board);
         printGameState(gameState);
         int slot = readSlot(input);
+        int[] indices = convertSlotToIndices(slot);
         System.out.println("Selected Slot: " + slot);
+        System.out.println("Row: " + indices[0] + ", Column: " + indices[1]);
         input.close();
     }
 
@@ -70,6 +72,13 @@ public class TicTacToeGame {
 
             System.out.println("Invalid slot. Please enter a number between 1 and 9.");
         }
+    }
+
+    static int[] convertSlotToIndices(int slot) {
+        int row = (slot - 1) / 3;
+        int column = (slot - 1) % 3;
+
+        return new int[] {row, column};
     }
 
     static class GameState {
