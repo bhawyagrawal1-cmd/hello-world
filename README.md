@@ -64,6 +64,10 @@ Tic-Tac-Toe UC2: Toss to Decide First Player and Symbol
 
 https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc2-toss-player-symbol
 
+Tic-Tac-Toe UC3: Accept User Slot Input (1-9)
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc3-user-slot-input
+
 ## Run
 
 ```powershell
