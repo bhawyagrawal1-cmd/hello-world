@@ -1,17 +1,22 @@
 package tictactoe;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class TicTacToeGame {
     public static void main(String[] args) {
         char[][] board = new char[3][3];
         Random random = new Random();
+        Scanner input = new Scanner(System.in);
 
         initializeBoard(board);
         GameState gameState = tossToStart(random);
 
         printBoard(board);
         printGameState(gameState);
+        int slot = readSlot(input);
+        System.out.println("Selected Slot: " + slot);
+        input.close();
     }
 
     static void initializeBoard(char[][] board) {
@@ -52,6 +57,19 @@ public class TicTacToeGame {
         System.out.println("Human Symbol: " + gameState.humanSymbol);
         System.out.println("Computer Symbol: " + gameState.computerSymbol);
         System.out.println("First Turn: " + gameState.currentPlayer);
+    }
+
+    static int readSlot(Scanner input) {
+        while (true) {
+            System.out.print("Enter a slot number (1-9): ");
+            int slot = input.nextInt();
+
+            if (slot >= 1 && slot <= 9) {
+                return slot;
+            }
+
+            System.out.println("Invalid slot. Please enter a number between 1 and 9.");
+        }
     }
 
     static class GameState {
