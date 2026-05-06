@@ -134,7 +134,7 @@ public class TicTacToeGame {
                 break;
             }
 
-            if (isBoardFull(board)) {
+            if (checkDrawCondition(board)) {
                 printBoard(board);
                 System.out.println("The game is a draw.");
                 break;
@@ -189,6 +189,14 @@ public class TicTacToeGame {
     static boolean hasWinningDiagonal(char[][] board, char symbol) {
         return (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
                 || (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol);
+    }
+
+    static boolean checkDrawCondition(char[][] board) {
+        if (checkWinningCondition(board, 'X') || checkWinningCondition(board, 'O')) {
+            return false;
+        }
+
+        return isBoardFull(board);
     }
 
     static boolean isBoardFull(char[][] board) {
