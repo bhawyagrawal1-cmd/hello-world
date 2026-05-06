@@ -88,6 +88,14 @@ Tic-Tac-Toe UC8: Continuous Turn-Based Game Loop
 
 https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc8-continuous-game-loop
 
+Tic-Tac-Toe UC9: Check Winning Condition
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc9-check-winning-condition
+
+Tic-Tac-Toe UC10: Detect Draw Condition
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc10-detect-draw-condition
+
 ## Run
 
 ```powershell
