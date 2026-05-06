@@ -22,9 +22,14 @@ public class TicTacToeGame {
             placeMove(board, indices[0], indices[1], gameState.humanSymbol);
         }
 
+        int computerSlot = makeComputerMove(board, gameState.computerSymbol, random);
+        int[] computerIndices = convertSlotToIndices(computerSlot);
+
         System.out.println("Selected Slot: " + slot);
         System.out.println("Row: " + indices[0] + ", Column: " + indices[1]);
         System.out.println("Move Valid: " + validMove);
+        System.out.println("Computer Selected Slot: " + computerSlot);
+        System.out.println("Computer Row: " + computerIndices[0] + ", Column: " + computerIndices[1]);
         printBoard(board);
         input.close();
     }
@@ -102,6 +107,18 @@ public class TicTacToeGame {
 
     static void placeMove(char[][] board, int row, int column, char symbol) {
         board[row][column] = symbol;
+    }
+
+    static int makeComputerMove(char[][] board, char computerSymbol, Random random) {
+        while (true) {
+            int slot = random.nextInt(9) + 1;
+            int[] indices = convertSlotToIndices(slot);
+
+            if (isValidMove(board, indices[0], indices[1])) {
+                placeMove(board, indices[0], indices[1], computerSymbol);
+                return slot;
+            }
+        }
     }
 
     static class GameState {
