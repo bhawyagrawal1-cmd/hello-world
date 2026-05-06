@@ -68,6 +68,26 @@ Tic-Tac-Toe UC3: Accept User Slot Input (1-9)
 
 https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc3-user-slot-input
 
+Tic-Tac-Toe UC4: Convert Slot Number to Board Index
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc4-slot-to-index
+
+Tic-Tac-Toe UC5: Validate User Move
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc5-validate-user-move
+
+Tic-Tac-Toe UC6: Place Move on Board
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc6-place-move-on-board
+
+Tic-Tac-Toe UC7: Computer Makes a Random Move
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc7-computer-random-move
+
+Tic-Tac-Toe UC8: Continuous Turn-Based Game Loop
+
+https://github.com/bhawyagrawal1-cmd/hello-world/tree/feature/tictactoe-uc8-continuous-game-loop
+
 ## Run
 
 ```powershell
